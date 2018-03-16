@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Test</title>
+   </head>
+   <body>
+      <script src="smart.js"></script>
+      <script src="device.js"></script>
+      <script src="tv.js"></script>
+      <script src="data.js"></script>
+      <script src="type.js"></script>
+      <script src="coffee.js"></script>
+      <script>
+         /*var device1 = new Device("tv", "tv1");
+         var device2 = new Device("m_box", "box1");
+
+         var deviceSet = [device1, device2];
+         var sh = new Smart();
+
+         sh.setDeviceSet(deviceSet);
+         var set = sh.getDeviceSet();
+         function print(value){
+            console.log(value);
+         }
+         set.forEach(print);
+         console.log("");
+
+         sh.addDevice(new Device("tv", "tv2"));
+         set.forEach(print);
+         console.log("");
+
+         sh.updateDevice("tv1", new Device("tv", "tv3"));
+         set.forEach(print);
+         console.log("");
+
+         sh.deleteDevice("tv3");
+         set.forEach(print);
+         console.log("");
+
+         console.log(sh.getDevice("box1"));
+         console.log("");
+
+         sh.readDeviceSet();
+         console.log("");
+
+
+         sh.addDevice(new Device("tv", "tv1"));
+         set.forEach(print);
+         console.log("");
+
+         sh.addType("Телевизор");
+         console.log(sh.getTypeSet());
+
+         sh.addType("Звук");
+         console.log(sh.getTypeSet());
+
+         sh.addType("Телевизор");
+         console.log(sh.getTypeSet());*/
+
+         var data = new Data();
+         var obj = data.getSmart();
+         console.dir(obj);
+         var types = obj._typeSet;
+         console.dir(types);
+         for (var i = 0; i < types.length; i++) {
+               console.dir(types[i]._title);
+               console.dir(types[i]._img);
+               console.dir(types[i]._description);
+         }
+
+
+
+
+      </script>
+
+
+
+
+
+   </body>
+</html>

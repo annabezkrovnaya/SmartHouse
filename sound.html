@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>TV</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+      <link rel="stylesheet" type="text/css" href="css/my_style.css" />
+      <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+      <script src="smart.js"></script>
+      <script src="device.js"></script>
+      <script src="tv.js"></script>
+      <script src="coffee.js"></script>
+      <script src="sound.js"></script>
+      <script src="emotion.js"></script>
+      <script src="data.js"></script>
+      <script src="type.js"></script>
+      <script src="programm.js"></script>
+      <script src="jquery-3.2.1.js"></script>
+      <script src="js/bootstrap.js"></script>
+   </head>
+   <body>
+      <div class="container">
+         <div class="row">
+            <div class="col-xs-3 col-sm-16 col-md-9 col-lg-12"><a href="#"><img alt="site logo" class="img-responsive"></a></div>
+         </div>
+      </div>
+      <div class="container">
+         <div class="row">
+            <div class="col-xs-3 col-sm-6 col-md-9 col-lg-12">
+               <div class="sound" id="sound">
+                  <img src="img\sSound.png" alt="">
+                  <h3 id="timer">Извините, данная страница в разработке</h3>
+               </div>
+               <div class="switcher" id="switcher">
+               </div>
+               <div class="info" id="info">
+                  <ul class="nav nav-tabs">
+                     <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                           Звук <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="dm">
+                        </ul>
+                     </li>
+                  </ul>
+               </div>
+           </div>
+         </div>
+      </div>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="music" id="music">
+               </br>
+                  <h4>МУЗЫКА:</h4>
+                  <button id="btnR" class="btn btn-info" type="button" name="reverse"><span class="btn-lg"><i class="fa fa-angle-double-left"></i></span></button>
+
+                  <button id="btnF" class="btn btn-info" type="button" name="forward"><span class="btn-lg"><i class="fa fa-angle-double-right"></i></span></button>
+               </div>
+               <div class="emotion" id="emo">
+               </br>
+                  <h4>"НАСТРОЕНИЕ":</h4>
+               </div>
+               <div class="nature" id="nature">
+               </br>
+                  <h4>"ЗВУКИ ПРИРОДЫ":</h4>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <script type="text/javascript">
+      var img = document.body.children[0].children[0].children[0].children[0].children[0];
+      img.setAttribute("src", "img/logo.png");
+      var main = document.body.children[0].children[0].children[0].children[0];
+      main.setAttribute("href", "remote.html");
+
+      var tv = document.body.children[1].children[0].children[0].children[0];
+      tv.style.width = "570px";
+      tv.style.height = "325px";
+      tv.style.border = "5px solid #016189";
+
+      var title = document.body.children[2].children[0].children[0].children[0].children[1];
+      title.style.color = "#016189";
+
+      var title = document.body.children[2].children[0].children[0].children[1].children[1];
+      title.style.color = "#016189";
+
+      var title = document.body.children[2].children[0].children[0].children[2].children[1];
+      title.style.color = "#016189";
+
+      </script>

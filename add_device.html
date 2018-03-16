@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Добавить тип</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+      <link rel="stylesheet" type="text/css" href="css/my_style.css" />
+      <script src="smart.js"></script>
+      <script src="device.js"></script>
+      <script src="tv.js"></script>
+   </head>
+   <body>
+
+      <div class="container">
+         <div class="row">
+            <div class="col-xs-3 col-sm-16 col-md-9 col-lg-12"><a href="#"><img alt="site logo" class="img-responsive"></a></div>
+         </div>
+      </div>
+      <div class="container">
+         <div class="row">
+           <div class="col-md-6">
+               <form class="form-horizontal">
+                   <div class="form-group">
+                       <label for="inputType">Введите тип устройства</label>
+                       <input id="inputType" type="type" class="form-control"  placeholder="Tип">
+                   </div>
+                   <div class="form-group">
+                       <label for="inputType">Введите название устройства</label>
+                       <input id="inputName" type="name" class="form-control"  placeholder="Имя">
+                   </div>
+                       <button id="btn" type="submit" class="btn btn-submit" onclick="save()"><span class="btn-lg">Принять</span></button>
+                </form>
+             </div>
+         </div>
+      </div>
+
+      <script>
+      var img = document.body.children[0].children[0].children[0].children[0].children[0];
+      img.setAttribute("src", "img/logo.png");
+      var main = document.body.children[0].children[0].children[0].children[0];
+      main.setAttribute("href", "remote.html");
+
+      var sh = new Smart();
+      var list = ["Телевизор", "Звук", "Кофе"];
+      sh.setTypeSet(list);
+      function save(){
+         var newType = document.getElementById("inputType").value;
+         sh.addType(newType);
+      }
+
+      console.dir(sh.getTypeSet());
+
+      </script>
+
+
+
+
+
+
+
+      <script src="jquery-3.2.1.js"></script>
+      <script src="js/bootstrap.js"></script>
+   </body>
+</html>
