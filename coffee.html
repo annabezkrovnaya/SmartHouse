@@ -7,15 +7,13 @@
       <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
       <link rel="stylesheet" type="text/css" href="css/my_style.css" />
       <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-      <script src="smart.js"></script>
-      <script src="device.js"></script>
-      <script src="tv.js"></script>
-      <script src="coffee.js"></script>
-      <script src="sound.js"></script>
-      <script src="emotion.js"></script>
+      <script src="Smart.js"></script>
+      <script src="Device.js"></script>
+      <script src="Tv.js"></script>
+      <script src="Coffee.js"></script>
+      <script src="Sound.js"></script>
       <script src="data.js"></script>
-      <script src="type.js"></script>
-      <script src="programm.js"></script>
+      <script src="Type.js"></script>
       <script src="jquery-3.2.1.js"></script>
       <script src="js/bootstrap.js"></script>
    </head>
@@ -101,53 +99,33 @@
          var button = document.createElement('button');
          button.className = 'btn btn-info';
          button.setAttribute("type", "button");
-         button.setAttribute("id", "c-btn"+i);
+         button.setAttribute("disabled", "disabled");
          var span = document.createElement('span');
          span.className = 'btn-lg';
+         span.setAttribute("id", "c-btn"+i);
          span.innerHTML = (prog[i]._title);
          button.appendChild(span);
          panel.appendChild(button);
+         button.addEventListener("click", function(event){
+            $('#timer').html('Кофе готовится. Пожалуйста, ожидайте');
+            var btn = event.target;
+            var attr = btn.getAttribute("id");
+            var reg = /\D+/ig;
+            var ind = attr.replace(reg, '');
+            var img = prog[ind]._img;
+            var time = prog[ind]._time;
+            setTimeout(function(){
+               $('#coffee').html(img);
+            }, time);
+            $('button').prop('disabled', true);
+            $('#sw-btn').prop('disabled', false);
+         });
       }
-
-         $(document).on('click', '#c-btn0', function () {
-            $('#timer').html('Ваш кофе готовится');
-            setTimeout(function(){
-               $('#coffee').html(prog[0]._img);
-            }, prog[0]._time);
-         });
-
-         $(document).on('click', '#c-btn1', function () {
-            $('#timer').html('Ваш кофе готовится');
-            setTimeout(function(){
-               $('#coffee').html(prog[1]._img);
-            }, prog[1]._time);
-         });
-
-         $(document).on('click', '#c-btn2', function () {
-            $('#timer').html('Ваш кофе готовится');
-            setTimeout(function(){
-               $('#coffee').html(prog[2]._img);
-            }, prog[2]._time);
-         });
-
-         $(document).on('click', '#c-btn3', function () {
-            $('#timer').html('Ваш кофе готовится');
-            setTimeout(function(){
-               $('#coffee').html(prog[3]._img);
-            }, prog[3]._time);
-         });
-
-         $(document).on('click', '#c-btn4', function () {
-            $('#timer').html('Ваш кофе готовится');
-            setTimeout(function(){
-               $('#coffee').html(prog[4]._img);
-            }, prog[4]._time);
-         });
 
       var switcher = document.createElement('button');
       var swContainer =  document.getElementById('switcher');
       switcher.className = 'btn btn-info';
-      switcher.setAttribute("type", "button");
+      switcher.setAttribute("type", "switch");
       switcher.setAttribute("id", "sw-btn");
       var spanSw = document.createElement('span');
       spanSw.className = 'btn-lg';
@@ -159,6 +137,7 @@
          $(document).on('click', '#sw-btn', function () {
             if(switchDef == 0) {
                $('#timer').html('Пожалуйста, выберите программу');
+               $('button').prop('disabled', false);
                switchDef = 1;
             }
             else {

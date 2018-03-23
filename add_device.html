@@ -6,9 +6,15 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
       <link rel="stylesheet" type="text/css" href="css/my_style.css" />
-      <script src="smart.js"></script>
-      <script src="device.js"></script>
-      <script src="tv.js"></script>
+      <script src="Smart.js"></script>
+      <script src="Device.js"></script>
+      <script src="Tv.js"></script>
+      <script src="Coffee.js"></script>
+      <script src="Sound.js"></script>
+      <script src="data.js"></script>
+      <script src="Type.js"></script>
+      <script src="jquery-3.2.1.js"></script>
+      <script src="js/bootstrap.js"></script>
    </head>
    <body>
 
@@ -20,16 +26,24 @@
       <div class="container">
          <div class="row">
            <div class="col-md-6">
+             <div class="check" id="check">
+               <!-- <input type="radio" name="rb" id="rb1" />
+                <label id="l1" type="radio" for="rb1">ТВ</label>
+                <input type="radio" name="rb" id="rb2" />
+                <label id="l2" type="radio" for="rb2">Звук</label>
+                <input type="radio" name="rb" id="rb3" />
+                <label id="l3" type="radio" for="rb3">Кофе</label>-->
+             </div>
                <form class="form-horizontal">
-                   <div class="form-group">
-                       <label for="inputType">Введите тип устройства</label>
-                       <input id="inputType" type="type" class="form-control"  placeholder="Tип">
+                  <div class="info">
+                       <h5 id="type"></h5>
+                       <h5 id="name"></h5>
                    </div>
                    <div class="form-group">
                        <label for="inputType">Введите название устройства</label>
                        <input id="inputName" type="name" class="form-control"  placeholder="Имя">
                    </div>
-                       <button id="btn" type="submit" class="btn btn-submit" onclick="save()"><span class="btn-lg">Принять</span></button>
+                       <button id="btn" type="submit" class="btn btn-submit" onclick='save()'><span class="btn-lg">Принять</span></button>
                 </form>
              </div>
          </div>
@@ -41,15 +55,55 @@
       var main = document.body.children[0].children[0].children[0].children[0];
       main.setAttribute("href", "remote.html");
 
-      var sh = new Smart();
-      var list = ["Телевизор", "Звук", "Кофе"];
-      sh.setTypeSet(list);
-      function save(){
-         var newType = document.getElementById("inputType").value;
-         sh.addType(newType);
-      }
+      </script>
 
-      console.dir(sh.getTypeSet());
+      <script type="text/javascript">
+       var sh = new Data();
+       var sh1 = sh.getSmart();
+       var types = sh1._typeSet;
+
+       for(var i = 0; i< types.length; i++){
+           var radio = document.getElementById('check');
+           var inp = document.createElement('input');
+           inp.setAttribute('type', 'radio');
+           inp.setAttribute('id', 'rb'+i);
+           inp.setAttribute('name', 'rb');
+           var lab = document.createElement('label');
+           lab.setAttribute('type', 'radio');
+           lab.setAttribute('id', 'lb'+i);
+           lab.setAttribute('for', 'rb'+i);
+           lab.innerHTML = types[i]._title;
+           radio.appendChild(inp);
+           radio.appendChild(lab);
+           lab.addEventListener("click", function(event){
+             var lb = event.target;
+             var attr = lb.getAttribute("id");
+             var reg = /\D+/ig;
+             var ind = attr.replace(reg, '');
+             var type = types[ind]._title;
+                $('#type').html(type);
+          });
+        }
+           var btn = document.getElementById('btn');
+           btn.addEventListener('click', function(){
+             var name = document.getElementById('inputName').value;
+             $('#name').html(name);
+             var t = document.getElementById('type');
+             var t1 = t.innerHTML;
+             var sh2 = new Data();
+             sh2.addDevice(t1, name);
+             var r = sh2.getSmart()._deviceSet;
+             alert("Вы добавили новое устройство. Теперь у вас " + r.length + " устройств");
+           });
+
+
+
+
+
+
+
+
+
 
       </script>
 
@@ -59,7 +113,6 @@
 
 
 
-      <script src="jquery-3.2.1.js"></script>
-      <script src="js/bootstrap.js"></script>
+
    </body>
 </html>

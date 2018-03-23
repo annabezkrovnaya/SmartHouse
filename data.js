@@ -22,11 +22,35 @@ function Data(){
 
    var coffee1 = new Coffee("Too Smart Coffee machine", programmList);
 
+   var musicList = [new Music("Heatens", "21 pilots", '<img src="img/music-1.png">', '<audio controls src="audio/21 pilots – heatens.mp3" autoplay="autoplay">'), new Music("Numb", "Linkin park", '<img src="img/music-2.png">', '<audio controls src="audio/Linkin park – Numb (оригинал).mp3" autoplay="autoplay">'), new Music("Immortals", "Fall Out Boy", '<img src="img/music-3.png">', '<audio controls src="audio/Fall Out Boy – Immortals.mp3" autoplay="autoplay">'), new Music("Roots", "Imagine Dragons", '<img src="img/music-4.png">', '<audio controls src="audio/Imagine_Dragons_Roots.mp3" autoplay="autoplay">'),
+   new Music("Place in time", "Amanda Abizaid", '<img src="img/music-5.png">', '<audio controls src="audio/amanda-abizaid-place-in-time.mp3" autoplay="autoplay">')];
+
+   var emotionList = [new Emotion("Подъём", '<img src="img/emotion-1.png">', '<audio controls src="audio/wakeup.mp3" autoplay="autoplay">', "#fceaa3"), new Emotion("Энергия", '<img src="img/emotion-2.png">', '<audio controls src="audio/energy.mp3" autoplay="autoplay">', "#fbb897"), new Emotion("Грусть", '<img src="img/emotion-3.png">', '<audio controls src="audio/anguish.mp3" autoplay="autoplay">', "#dce9ef"), new Emotion("Мотивация", '<img src="img/emotion-4.png">', '<audio controls src="audio/motivation.mp3" autoplay="autoplay">', "#b0c7a6"),
+   new Emotion("Комфорт", '<img src="img/emotion-6.png">', '<audio controls src="audio/comfort.mp3" autoplay="autoplay">', "#bdd8e8")];
+
+   var natureList = [{name:"Шум дождя", img:'<img src="img/nature-1.png">', sound:'<audio controls src="audio/shum_dozhdja.mp3" autoplay="autoplay">'}, {name:"Утро в лесу", img:'<img src="img/nature-2.png">', sound:'<audio controls src="audio/utro_v_lesu.mp3" autoplay="autoplay">'}, {name:"Соловей", img:'<img src="img/nature-3.png">', sound:'<audio controls src="audio/solovej.mp3" autoplay="autoplay">'}, {name:"Шум моря", img:'<img src="img/nature-4.png">', sound:'<audio controls src="audio/shum_morja.mp3" autoplay="autoplay">'}];
+
+   var sound1 = new Sound("Big home sound", emotionList, musicList, natureList);
+
    var typeList = [type1, type2, type3];
-   var deviceList = [tv1, tv2, coffee1];
+   var deviceList = [tv1, tv2, coffee1, sound1];
    this.sh = new Smart(deviceList, typeList);
 }
 
    Data.prototype.getSmart = function(){
       return this.sh;
+   };
+
+   Data.prototype.setSmart = function(smart){
+      this.sh = smart;
+   };
+
+   Data.prototype.addDevice = function(type, name){
+      var smart = this.sh;
+      var devices = smart._deviceSet;
+      var device = {_type: type, _name: name};
+      devices.push(device);
+      var typeList = smart._typeSet;
+      var newSmart = new Smart(devices, typeList);
+      this.setSmart(newSmart);
    };

@@ -7,15 +7,13 @@
       <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
       <link rel="stylesheet" type="text/css" href="css/my_style.css" />
       <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-      <script src="smart.js"></script>
-      <script src="device.js"></script>
-      <script src="tv.js"></script>
-      <script src="coffee.js"></script>
-      <script src="sound.js"></script>
-      <script src="emotion.js"></script>
+      <script src="Smart.js"></script>
+      <script src="Device.js"></script>
+      <script src="Tv.js"></script>
+      <script src="Coffee.js"></script>
+      <script src="Sound.js"></script>
       <script src="data.js"></script>
-      <script src="type.js"></script>
-      <script src="programm.js"></script>
+      <script src="Type.js"></script>
       <script src="jquery-3.2.1.js"></script>
       <script src="js/bootstrap.js"></script>
    </head>
@@ -116,31 +114,13 @@
          span.innerHTML = (i+1);
          button.appendChild(span);
          remote.appendChild(button);
+         button.addEventListener("click", function(event){
+            var btn = event.target;
+            var ind = btn.innerHTML - 1;
+            $('#tv').html(chan[ind]);
+         });
       }
 
-      var defChan = chan[0];
-      var defChan1 = chan[1];
-      var defChan2 = chan[2];
-      var defChan3 = chan[3];
-      var defChan4 = chan[4];
-
-      $(document).on('click', '#btn0', function () {
-            $('#tv').html(defChan);
-      });
-      $(document).on('click', '#btn1', function () {
-            $('#tv').html(defChan1);
-      });
-      $(document).on('click', '#btn2', function () {
-            $('#tv').html(defChan2);
-      });
-      $(document).on('click', '#btn3', function () {
-            $('#tv').html(defChan3);
-      });
-      $(document).on('click', '#btn4', function () {
-            $('#tv').html(defChan4);
-      });
-
-      var i = 0;
       var nextChan = null;
       if (i < chan.length) {
          $(document).on('click', '#btnF', function () {
@@ -171,27 +151,20 @@
          var button = document.createElement('button');
          button.className = 'btn btn-info';
          button.setAttribute("type", "button");
-         button.setAttribute("id", "f-btn"+i);
          var span = document.createElement('span');
          span.className = 'btn-lg';
+         span.setAttribute("id", "f-btn"+i);
          span.innerHTML = (films[i].name);
          button.appendChild(span);
          remote.appendChild(button);
+         button.addEventListener("click", function(event){
+            var btn = event.target;
+            var attr = btn.getAttribute("id");
+            var reg = /\D+/ig;
+            var ind = attr.replace(reg, '');
+            $('#tv').html(films[ind].link);
+         });
       }
-
-      var film1 = films[0].link;
-      var film2 = films[1].link;
-      var film3 = films[2].link;
-
-      $(document).on('click', '#f-btn0', function () {
-            $('#tv').html(film1);
-      });
-      $(document).on('click', '#f-btn1', function () {
-            $('#tv').html(film2);
-      });
-      $(document).on('click', '#f-btn2', function () {
-            $('#tv').html(film3);
-      });
 
       var switcher = document.createElement('button');
       var swContainer =  document.getElementById('switcher');
@@ -207,7 +180,7 @@
       var switchDef = 0;
          $(document).on('click', '#sw-btn', function () {
             if(switchDef == 0) {
-               $('#tv').html(defChan);
+               $('#tv').html(chan[0]);
                switchDef = 1;
             }
             else {

@@ -5,12 +5,13 @@
       <title>Test</title>
    </head>
    <body>
-      <script src="smart.js"></script>
-      <script src="device.js"></script>
-      <script src="tv.js"></script>
+      <script src="Smart.js"></script>
+      <script src="Device.js"></script>
+      <script src="Tv.js"></script>
+      <script src="Coffee.js"></script>
+      <script src="Sound.js"></script>
       <script src="data.js"></script>
-      <script src="type.js"></script>
-      <script src="coffee.js"></script>
+      <script src="Type.js"></script>
       <script>
          /*var device1 = new Device("tv", "tv1");
          var device2 = new Device("m_box", "box1");
@@ -56,7 +57,7 @@
          console.log(sh.getTypeSet());
 
          sh.addType("Телевизор");
-         console.log(sh.getTypeSet());*/
+         console.log(sh.getTypeSet());
 
          var data = new Data();
          var obj = data.getSmart();
@@ -67,7 +68,12 @@
                console.dir(types[i]._title);
                console.dir(types[i]._img);
                console.dir(types[i]._description);
-         }
+         }*/
+
+         /*var sh = new Data();
+         sh.addDevice("Звук", "sound2");
+         var sh2 = sh.getSmart();
+         console.dir(sh2);*/
 
 
 

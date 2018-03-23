@@ -157,7 +157,6 @@
 .tv .coffee .sound  {display: inline-block;}
 
 .switcher {
-   position: fixed;
    margin-left: 600px;
    margin-top: -75px;
 }
@@ -168,4 +167,63 @@ h3 {
    justify-content: center;
    margin-top: 100px;
    font-style: oblique;
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+label[type="radio"] {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 10px;
+  line-height: 36px;
+  cursor: pointer;
+}
+label[type="radio"]::before {
+  content: " ";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #234261;
+  border-radius: 4px;
+  z-index: -1;
+}
+input[type="radio"] + label[type="radio"]::before {
+  border-radius: 18px;
+}
+/* Checked */
+input[type="radio"]:checked + label {
+  padding-left: 10px;
+  color: #fff;
+}
+input[type="radio"]:checked + label[type="radio"]::before {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #234261;
+}
+
+label[type="radio"]{
+   margin: 50px;
+   font-size: 1.3em;
+   color: #234261;
+}
+/* Transition */
+
+label[type="radio"]::before {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+
+.form-horizontal{
+   margin: -50px;
 }
