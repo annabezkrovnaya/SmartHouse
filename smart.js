@@ -52,7 +52,7 @@ function Smart (deviceSet, typeSet){
 
    Smart.prototype.readDeviceSet = function(){
       this._deviceSet = this._deviceSet.sort();
-      return this._deviceSet.forEach(print);
+      return this._deviceSet;
    };
 
    Smart.prototype.readSpecificDeviceSet = function(type){
@@ -60,11 +60,7 @@ function Smart (deviceSet, typeSet){
          return deviceSet._type == type;
       }
       var newSet = this._deviceSet.filter(typer);
-      return newSet.forEach(print);
-   };
-
-   function print (device){
-      console.log(device);
+      return newSet;
    };
 
    Smart.prototype.addType = function(type){
@@ -72,7 +68,7 @@ function Smart (deviceSet, typeSet){
          return value === type;
       }
       if(this._typeSet.some(condition) == false) this._typeSet.push(type);
-      else alert("Такой тип уже существует");
+      else throw new typeError("Такой тип уже существует");
    };
 
    Smart.prototype.deleteType = function(type){
@@ -81,7 +77,7 @@ function Smart (deviceSet, typeSet){
             this._typeSet.splice(i, 1);
          }
          else {
-            "Такого типа ещё не существует"
+            throw new typeError("Такого типа ещё не существует");
          }
       }
    };

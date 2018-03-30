@@ -29,12 +29,10 @@ function Device (type, name){
 
    Device.prototype.switchON = function(){
       this._currentState = 1;
-      console.log(this._type + " is switched on");
    };
 
    Device.prototype.switchOFF = function(){
       this._currentState = 0;
-      console.log(this._type + " is switched off");
    };
 
    Device.prototype.timer = function(time){
@@ -47,16 +45,4 @@ function Device (type, name){
             setTimeout(function(){device.switchOFF()}, mils);
             break;
       }
-   };
-
-   Device.prototype.report = function(){
-      var currentDate = new Date();
-      console.log(currentDate);
-
-      if(this._currentState === 1){
-         console.log(this._type + " is on now");
-      }
-      else console.log(this._type + " is off now");
-      var currentDate = new Date();
-      console.log(currentDate);
    };

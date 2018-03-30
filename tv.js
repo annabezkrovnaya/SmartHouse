@@ -75,7 +75,6 @@ function TvSet(name, channelNum, volume, channelList, seriesList){
 
    TvSet.prototype.setChannel = function(channelNumber) {
       this._defaultChannel = channelNumber;
-      console.log("You are watching " + this._defaultChannel + " channel");
    };
 
    TvSet.prototype.switchChannel = function(label) {
@@ -86,14 +85,14 @@ function TvSet(name, channelNum, volume, channelList, seriesList){
          case '-':
             --this._defaultChannel;
             break;
-         default: console.log("Wrong label. It can be only \'+\' or \'-\'");
+         default: throw new SyntaxError("Wrong label. It can be only \'+\' or \'-\'");
       }
    };
 
    TvSet.prototype.chooseSeries = function(title, serieNum) {
       for (var serie in this._seriesList) {
          if (this._seriesList[serie].getTitle === title && this._seriesList[serie].getSerieNum === serieNum) {
-            console.log("Now you're watching \"" + this._seriesList[serie].getTitle + "\"" + this._seriesList[serie].getSerieNum + " serie");
+            return this._seriesList[serie].getSerieNum;
          }
       }
    };
@@ -109,17 +108,9 @@ function TvSet(name, channelNum, volume, channelList, seriesList){
    TvSet.prototype.playNextUnviewedSerie = function(title) {
       for (var serie in this._seriesList) {
          if (this._seriesList[serie].getTitle === title && this._seriesList[serie].getViewed === 0) {
-            console.log("Now you're watching \"" + this._seriesList[serie].getTitle + "\"" + this._seriesList[serie].getSerieNum + " serie");
+            return this._seriesList[serie].getSerieNum;
          }
       }
    };
 
-   TvSet.prototype.report = function() {
-      Device.prototype.report.call(this);
-      console.log("We have " + number + "unviewed series.");
-      var choice = alert("Would you like to choose one?", "yes/no");
-      if(choice == 'yes'){
-         console.log(this._seriesList);
-
-      }
-   };
+   
